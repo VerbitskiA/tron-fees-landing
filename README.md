@@ -43,11 +43,18 @@ Open [http://localhost:3000](http://localhost:3000).
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `NEXT_PUBLIC_TELEGRAM_BOT_URL` | Yes | Full Telegram bot deep link for CTAs |
-| `NEXT_PUBLIC_SUPPORT_TELEGRAM` | No | Support handle (default: `tron_fees_support`) |
+| `NEXT_PUBLIC_SUPPORT_TELEGRAM` | No | Support handle (default: `tron_volt_support`) |
 
 ## Brand Logo (Favicon)
 
-Place your logo at `public/brand/logo.png`. It is used as the browser tab icon (favicon) only — the landing page uses the TronVolt wordmark in text.
+Next.js uses files in `src/app/` for the browser tab icon:
+
+1. **Your logo:** save as [`src/app/icon.png`](src/app/icon.png) (recommended, 512×512 or 32×32 PNG).
+2. **Until then:** [`src/app/icon.svg`](src/app/icon.svg) (built-in TronVolt lightning bolt) is shown.
+
+`public/brand/logo.png` is optional storage only — it is **not** used for favicon unless copied to `src/app/icon.png`.
+
+The landing page uses the TronVolt wordmark in text, not the image logo.
 
 ## Scripts
 

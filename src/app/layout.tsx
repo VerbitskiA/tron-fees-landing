@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { logo, siteConfig } from "@/lib/config";
+import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,10 +27,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-  },
-  icons: {
-    icon: logo.src,
-    apple: logo.src,
   },
 };
 

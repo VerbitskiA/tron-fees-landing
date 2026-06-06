@@ -4,6 +4,7 @@ export const MAX_SAVINGS_PERCENT = 70;
 export const TRONVOLT_COST_RATE = 0.3;
 
 export const logo = {
+  /** Optional brand asset in public/. For favicon, prefer `src/app/icon.png`. */
   src: "/brand/logo.png",
   alt: "TronVolt",
 } as const;
@@ -23,7 +24,7 @@ export const siteConfig = {
   ],
   apiBaseUrl: "https://tron-fees-api.tronpay.me",
   supportTelegram:
-    process.env.NEXT_PUBLIC_SUPPORT_TELEGRAM ?? "tron_fees_support",
+    process.env.NEXT_PUBLIC_SUPPORT_TELEGRAM ?? "tron_volt_support",
   telegramBotUrl: process.env.NEXT_PUBLIC_TELEGRAM_BOT_URL ?? "",
 } as const;
 
