@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TronVolt Landing Page
+
+Marketing landing page for TronVolt — TRON Energy delegation via Telegram bot and API.
+
+## Tech Stack
+
+- Next.js 15+ (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Copy environment variables:
+
+```bash
+cp .env.example .env.local
+```
+
+3. Set your Telegram bot URL in `.env.local`:
+
+```
+NEXT_PUBLIC_TELEGRAM_BOT_URL=https://t.me/YourBotUsername
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `NEXT_PUBLIC_TELEGRAM_BOT_URL` | Yes | Full Telegram bot deep link for CTAs |
+| `NEXT_PUBLIC_SUPPORT_TELEGRAM` | No | Support handle (default: `tron_fees_support`) |
 
-## Learn More
+## Brand Logo (Favicon)
 
-To learn more about Next.js, take a look at the following resources:
+Place your logo at `public/brand/logo.png`. It is used as the browser tab icon (favicon) only — the landing page uses the TronVolt wordmark in text.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` — Start development server
+- `npm run build` — Production build
+- `npm run start` — Start production server
+- `npm run lint` — Run ESLint
 
-## Deploy on Vercel
+## Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` — Main landing page
+- `/docs` — API documentation placeholder
+- `/terms` — Terms of Service placeholder
+- `/privacy` — Privacy Policy placeholder
