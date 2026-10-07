@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { ReferralSection } from "@/components/sections/ReferralSection";
 import { SavingsCalculator } from "@/components/sections/SavingsCalculator";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { UseCases } from "@/components/sections/UseCases";
@@ -20,6 +21,7 @@ export default function Home() {
         <HowItWorks />
         <SavingsCalculator />
         <UseCases />
+        <ReferralSection />
         <WhyEnergy />
         <TrustSection />
         <FaqSection />

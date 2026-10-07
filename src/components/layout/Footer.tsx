@@ -4,6 +4,7 @@ import { getSupportUrl, getTelegramBotUrl, siteConfig } from "@/lib/config";
 
 const footerLinks = [
   { label: "Telegram Bot", href: getTelegramBotUrl() ?? "#", external: true },
+  { label: "Referral Program", href: "/#referral", external: false },
   { label: "Terms of Service", href: "/terms", external: false },
   { label: "Privacy Policy", href: "/privacy", external: false },
 ];

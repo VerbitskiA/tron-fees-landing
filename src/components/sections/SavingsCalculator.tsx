@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
+import { trackEvent } from "@/lib/analytics";
 import {
   calculateSavings,
   formatTrx,
@@ -12,11 +13,18 @@ import {
 export function SavingsCalculator() {
   const [transactionCount, setTransactionCount] = useState(100);
   const [avgTrxFee, setAvgTrxFee] = useState(13.5);
+  const trackedInteraction = useRef(false);
 
   const result = useMemo(
     () => calculateSavings(transactionCount, avgTrxFee),
     [transactionCount, avgTrxFee],
   );
+
+  function onInputChange() {
+    if (trackedInteraction.current) return;
+    trackedInteraction.current = true;
+    trackEvent("calculator_interacted");
+  }
 
   return (
     <Section
@@ -41,7 +49,10 @@ export function SavingsCalculator() {
                 min={1}
                 max={1000}
                 value={transactionCount}
-                onChange={(e) => setTransactionCount(Number(e.target.value))}
+                onChange={(e) => {
+                  onInputChange();
+                  setTransactionCount(Number(e.target.value));
+                }}
                 className="w-full accent-primary"
               />
               <input
@@ -49,9 +60,10 @@ export function SavingsCalculator() {
                 min={1}
                 max={10000}
                 value={transactionCount}
-                onChange={(e) =>
-                  setTransactionCount(Math.max(1, Number(e.target.value)))
-                }
+                onChange={(e) => {
+                  onInputChange();
+                  setTransactionCount(Math.max(1, Number(e.target.value)));
+                }}
                 className="mt-2 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm outline-none focus:border-primary"
               />
             </div>
@@ -71,7 +83,10 @@ export function SavingsCalculator() {
                 max={60}
                 step={0.1}
                 value={avgTrxFee}
-                onChange={(e) => setAvgTrxFee(Number(e.target.value))}
+                onChange={(e) => {
+                  onInputChange();
+                  setAvgTrxFee(Number(e.target.value));
+                }}
                 className="w-full accent-primary"
               />
               <input
@@ -80,9 +95,10 @@ export function SavingsCalculator() {
                 max={100}
                 step={0.1}
                 value={avgTrxFee}
-                onChange={(e) =>
-                  setAvgTrxFee(Math.max(0.1, Number(e.target.value)))
-                }
+                onChange={(e) => {
+                  onInputChange();
+                  setAvgTrxFee(Math.max(0.1, Number(e.target.value)));
+                }}
                 className="mt-2 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm outline-none focus:border-primary"
               />
             </div>

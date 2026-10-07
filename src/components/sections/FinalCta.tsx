@@ -1,4 +1,5 @@
 import { MessageCircle, Send } from "lucide-react";
+import { TrackedButton } from "@/components/analytics/TrackedButton";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { getSupportUrl, getTelegramBotUrl } from "@/lib/config";
@@ -20,10 +21,16 @@ export function FinalCta() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             {botUrl ? (
-              <Button href={botUrl} external variant="primary">
+              <TrackedButton
+                href={botUrl}
+                external
+                variant="primary"
+                event="cta_bot_click"
+                eventProps={{ location: "final" }}
+              >
                 <Send className="h-4 w-4" />
                 Open Telegram Bot
-              </Button>
+              </TrackedButton>
             ) : (
               <Button variant="primary" disabled>
                 Configure Telegram Bot URL

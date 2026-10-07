@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import {
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type ReactNode,
+} from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
 
@@ -34,11 +38,14 @@ export function Button({
 
   if (href) {
     if (external || href.startsWith("#") || href.startsWith("http")) {
+      // Button-typed props (onClick for CTA tracking) are safe on anchors.
+      const anchorProps = props as unknown as AnchorHTMLAttributes<HTMLAnchorElement>;
       return (
         <a
           href={href}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           className={classes}
+          {...anchorProps}
         >
           {children}
         </a>

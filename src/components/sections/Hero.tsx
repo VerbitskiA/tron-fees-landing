@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { trackEvent } from "@/lib/analytics";
 import { getTelegramBotUrl, MAX_SAVINGS_PERCENT } from "@/lib/config";
 
 export function Hero() {
@@ -50,7 +51,12 @@ export function Hero() {
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
             {botUrl ? (
-              <Button href={botUrl} external variant="primary">
+              <Button
+                href={botUrl}
+                external
+                variant="primary"
+                onClick={() => trackEvent("cta_bot_click", { location: "hero" })}
+              >
                 Open Telegram Bot
               </Button>
             ) : (

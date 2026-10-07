@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { analyticsEnabled, umamiConfig } from "@/lib/analytics";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -41,6 +43,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        {analyticsEnabled() ? (
+          <Script
+            src={`${umamiConfig.url.replace(/\/$/, "")}/script.js`}
+            data-website-id={umamiConfig.websiteId}
+            strategy="afterInteractive"
+          />
+        ) : null}
         {children}
       </body>
     </html>

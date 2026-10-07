@@ -5,12 +5,14 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { trackEvent } from "@/lib/analytics";
 import { getTelegramBotUrl, siteConfig } from "@/lib/config";
 
 const navLinks = [
   { href: "#benefits", label: "Benefits" },
   { href: "#how-it-works", label: "How It Works" },
   { href: "#calculator", label: "Calculator" },
+  { href: "#referral", label: "Referral" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -40,7 +42,13 @@ export function Header() {
 
           <div className="hidden md:block">
             {botUrl ? (
-              <Button href={botUrl} external variant="primary" className="px-4 py-2">
+              <Button
+                href={botUrl}
+                external
+                variant="primary"
+                className="px-4 py-2"
+                onClick={() => trackEvent("cta_bot_click", { location: "header" })}
+              >
                 Open Telegram Bot
               </Button>
             ) : (
@@ -71,7 +79,13 @@ export function Header() {
               </a>
             ))}
             {botUrl ? (
-              <Button href={botUrl} external variant="primary" className="w-full">
+              <Button
+                href={botUrl}
+                external
+                variant="primary"
+                className="w-full"
+                onClick={() => trackEvent("cta_bot_click", { location: "header_mobile" })}
+              >
                 Open Telegram Bot
               </Button>
             ) : null}
