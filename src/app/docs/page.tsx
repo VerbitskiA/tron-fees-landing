@@ -1,36 +1,36 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, BarChart3, Bell, Zap } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { getSupportUrl, siteConfig } from "@/lib/config";
+import { getSupportUrl } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "API — Early Access — TronVolt",
   description:
-    "Integrate TRON Energy rental programmatically: price estimates, delegation orders, status tracking. API is in early access — onboarding is manual.",
+    "TRON Energy rental API for services and bots: price estimates, delegation orders, status notifications. Early access — onboarding is manual.",
 };
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="mt-8 glass-card rounded-2xl p-6">
-      <h2 className="text-lg font-semibold">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm text-muted">{children}</div>
-    </div>
-  );
-}
-
-function Endpoint({ method, path, note }: { method: string; path: string; note?: string }) {
-  return (
-    <div>
-      <code className="text-sm">
-        <span className="text-accent">{method}</span>{" "}
-        <span className="text-white">{path}</span>
-      </code>
-      {note ? <p className="mt-1 text-sm text-muted">{note}</p> : null}
-    </div>
-  );
-}
+const capabilities = [
+  {
+    icon: Zap,
+    title: "Energy delegation on demand",
+    description:
+      "Rent TRON Energy for an address programmatically and cut USDT TRC-20 transfer costs by up to 70%.",
+  },
+  {
+    icon: BarChart3,
+    title: "Pricing before commitment",
+    description:
+      "Request a price estimate for any amount and duration before creating an order.",
+  },
+  {
+    icon: Bell,
+    title: "Status notifications",
+    description:
+      "Know when an order is paid, executed or failed — delivered to your service.",
+  },
+];
 
 export default function DocsPage() {
   return (
@@ -46,75 +46,33 @@ export default function DocsPage() {
 
         <h1 className="text-3xl font-bold">API — Early Access</h1>
         <p className="mt-4 text-muted">
-          The TronVolt API lets partners rent TRON Energy programmatically:
-          price estimates, delegation orders, status tracking. It powers our
-          own Telegram bot today, and we are opening it to integrations one
-          partner at a time — <span className="text-white">onboarding is manual</span>.
-          If you move USDT on TRON at volume (a service, an exchanger, a bot),
-          write to us and we will set you up.
+          We are opening a TRON Energy rental API for services, exchangers and
+          bots that move USDT on TRON at volume. It is in early access and we
+          onboard partners manually — one at a time, with keys scoped per
+          integration. Full documentation is shared during onboarding.
         </p>
 
-        <Section title="Base URL">
-          <code className="block rounded-lg bg-white/5 px-4 py-3 text-sm text-accent">
-            {siteConfig.apiBaseUrl}
-          </code>
-          <p>All responses are JSON (camelCase).</p>
-        </Section>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {capabilities.map((c) => (
+            <div key={c.title} className="glass-card rounded-2xl p-5">
+              <c.icon className="h-6 w-6 text-accent" />
+              <h2 className="mt-3 text-sm font-semibold">{c.title}</h2>
+              <p className="mt-2 text-sm text-muted">{c.description}</p>
+            </div>
+          ))}
+        </div>
 
-        <Section title="Authentication">
-          <p>
-            Every request (except <code>GET /health</code>) requires the header{" "}
-            <code>X-Api-Key</code> with an individual key. Keys are issued
-            manually during onboarding — we scope them per partner and help
-            with the integration. The reference below is what you get access to.
+        <div className="mt-8 glass-card rounded-2xl p-6">
+          <h2 className="text-lg font-semibold">Want in?</h2>
+          <p className="mt-2 text-sm text-muted">
+            Tell us about your service and expected volumes — we will set you
+            up and help with the integration.
           </p>
-        </Section>
-
-        <Section title="1. Register a user">
-          <Endpoint
-            method="POST"
-            path="/api/users/register"
-            note='Body: { "telegramId": 123456789, "referralStartPayload": "aff_CODE" } (payload optional). Idempotent: same telegramId returns the same userId.'
-          />
-        </Section>
-
-        <Section title="2. Price estimate">
-          <Endpoint
-            method="GET"
-            path="/api/energy-delegation/pricing-estimate?delegationEnergyQuantity=65000&delegationDurationHours=1&telegramUserId=123456789"
-            note="Optional telegramUserId adds the caller's referral discount to the estimate (rewardDiscountSun, discountedClientPriceSun)."
-          />
-        </Section>
-
-        <Section title="3. Create an order">
-          <Endpoint
-            method="POST"
-            path="/api/energy-delegation/orders"
-            note='Body: { "telegramUserId": 123456789, "delegationEnergyQuantity": 65000, "delegationDurationHours": 1, "delegationRecipientTronAddress": "T..." }. Returns a payment address and amount; the order executes automatically once the payment is confirmed.'
-          />
-        </Section>
-
-        <Section title="4. Order status">
-          <Endpoint
-            method="GET"
-            path="/api/energy-delegation/orders/{orderId}"
-            note="Statuses: Created → Paid → Executed | Failed | Expired (unpaid for 24h)."
-          />
-        </Section>
-
-        <Section title="Referral program">
-          <p>
-            Every registered user gets a referral code automatically. Rewards
-            (50% of order margin by default) accrue on each paid order of an
-            invited user and are applied automatically as a discount (up to 80%
-            of the order price) on the inviter&apos;s own orders.
-          </p>
-        </Section>
-
-        <div className="mt-8">
-          <Button href={getSupportUrl()} external variant="primary">
-            Contact Support for API Access
-          </Button>
+          <div className="mt-4">
+            <Button href={getSupportUrl()} external variant="primary">
+              Contact Support
+            </Button>
+          </div>
         </div>
       </Container>
     </div>
