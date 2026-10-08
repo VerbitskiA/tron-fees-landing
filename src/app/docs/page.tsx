@@ -6,9 +6,9 @@ import { Container } from "@/components/ui/Container";
 import { getSupportUrl, siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
-  title: "API Documentation — TronVolt",
+  title: "API — Early Access — TronVolt",
   description:
-    "TronVolt REST API: register users, estimate TRON energy prices, create delegation orders and track their status.",
+    "Integrate TRON Energy rental programmatically: price estimates, delegation orders, status tracking. API is in early access — onboarding is manual.",
 };
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -44,12 +44,14 @@ export default function DocsPage() {
           Back to home
         </Link>
 
-        <h1 className="text-3xl font-bold">API Documentation</h1>
+        <h1 className="text-3xl font-bold">API — Early Access</h1>
         <p className="mt-4 text-muted">
-          Use the TronVolt API to rent TRON Energy programmatically: register a
-          user, get a price estimate, create an order and receive a payment
-          address. Payments are processed per order; once confirmed, energy is
-          delegated to the target address within a minute.
+          The TronVolt API lets partners rent TRON Energy programmatically:
+          price estimates, delegation orders, status tracking. It powers our
+          own Telegram bot today, and we are opening it to integrations one
+          partner at a time — <span className="text-white">onboarding is manual</span>.
+          If you move USDT on TRON at volume (a service, an exchanger, a bot),
+          write to us and we will set you up.
         </p>
 
         <Section title="Base URL">
@@ -62,8 +64,9 @@ export default function DocsPage() {
         <Section title="Authentication">
           <p>
             Every request (except <code>GET /health</code>) requires the header{" "}
-            <code>X-Api-Key</code> with your service key. Contact support to get
-            one — integration help is included.
+            <code>X-Api-Key</code> with an individual key. Keys are issued
+            manually during onboarding — we scope them per partner and help
+            with the integration. The reference below is what you get access to.
           </p>
         </Section>
 
