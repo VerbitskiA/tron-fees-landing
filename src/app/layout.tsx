@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.tronvolt.com"),
   title: siteConfig.title,
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],

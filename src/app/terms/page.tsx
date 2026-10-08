@@ -1,7 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { siteConfig } from "@/lib/config";
+import { getSupportHandle, siteConfig } from "@/lib/config";
+
+export const metadata: Metadata = {
+  title: "Terms of Service — TronVolt",
+  description:
+    "Terms of Service for the TronVolt TRON Energy delegation service (Telegram bot and API).",
+};
+
+function H({ children }: { children: React.ReactNode }) {
+  return <h2 className="text-xl font-semibold text-foreground">{children}</h2>;
+}
 
 export default function TermsPage() {
   return (
@@ -16,45 +27,79 @@ export default function TermsPage() {
         </Link>
 
         <h1 className="text-3xl font-bold">Terms of Service</h1>
-        <p className="mt-2 text-sm text-muted">Last updated: June 2026</p>
+        <p className="mt-2 text-sm text-muted">Last updated: October 2026</p>
 
-        <div className="prose prose-invert mt-8 max-w-none space-y-6 text-muted">
+        <div className="mt-8 max-w-none space-y-6 text-muted">
           <p>
-            These Terms of Service govern your use of {siteConfig.name} and
-            related services, including the Telegram bot and API.
+            These Terms govern your use of {siteConfig.name} — a TRON Energy
+            delegation service operated via a Telegram bot and a REST API.
+            By using the service you agree to these terms.
           </p>
-          <h2 className="text-xl font-semibold text-foreground">
-            1. Service Description
-          </h2>
+
+          <H>1. The service</H>
           <p>
-            {siteConfig.name} provides TRON Energy delegation services. By using
-            our services, you agree to these terms.
+            {siteConfig.name} rents TRON Energy to your address for a limited
+            time (currently 1 hour packages), which reduces network fees for
+            TRON transactions such as USDT TRC-20 transfers. We never take
+            custody of your wallet, keys or tokens: you pay a fixed price per
+            order and energy is delegated on-chain to the address you specify.
           </p>
-          <h2 className="text-xl font-semibold text-foreground">
-            2. User Responsibilities
-          </h2>
+
+          <H>2. Orders and payment</H>
           <p>
-            You are responsible for providing accurate wallet addresses and
-            ensuring you have authority to use the addresses you provide.
+            Each order is paid separately in cryptocurrency via a third-party
+            payment processor. An order is executed after the payment is
+            confirmed on-chain, usually within a minute. Unpaid orders expire
+            after 24 hours with no charge. Prices are shown before payment and
+            may change over time; the price at order creation is the price you
+            pay.
           </p>
-          <h2 className="text-xl font-semibold text-foreground">
-            3. Payments
-          </h2>
+
+          <H>3. Failed orders and refunds</H>
           <p>
-            All payments are processed through supported payment providers.
-            Prices are displayed before purchase and are subject to change.
+            If an order cannot be executed after a confirmed payment (for
+            example, the energy provider rejects it), contact support{" "}
+            {getSupportHandle()} — the paid amount will be refunded or the order
+            re-executed at our discretion. Refunds are made in the cryptocurrency
+            originally paid.
           </p>
-          <h2 className="text-xl font-semibold text-foreground">
-            4. Limitation of Liability
-          </h2>
+
+          <H>4. Referral program</H>
           <p>
-            {siteConfig.name} is provided &quot;as is&quot; without warranties.
-            We are not liable for losses resulting from incorrect wallet
-            addresses, network issues, or third-party service failures.
+            Users earn rewards on paid orders of users they invite (by default
+            50% of the order margin). Rewards are service credits: they are
+            applied automatically as a discount (up to 80% of the order price)
+            on the inviter&apos;s own orders. Rewards have no cash value, cannot
+            be withdrawn and do not accrue interest. We may change reward rates
+            for future orders at any time; changes do not affect already accrued
+            credits.
           </p>
-          <p className="text-sm">
-            This is a placeholder document. A complete Terms of Service will be
-            published before public launch.
+
+          <H>5. Acceptable use</H>
+          <p>
+            The service may not be used for illegal purposes, sanctioned
+            addresses, or abuse (multi-accounting, automation attacks on the
+            referral program). We may refuse service and cancel accrued rewards
+            in cases of abuse.
+          </p>
+
+          <H>6. No warranty; limitation of liability</H>
+          <p>
+            The service is provided &quot;as is&quot;. TRON network conditions,
+            third-party providers and payment processors are outside our
+            control. Our total liability for any claim is limited to the amount
+            paid for the order giving rise to the claim.
+          </p>
+
+          <H>7. Changes</H>
+          <p>
+            We may update these terms; the current version is always available
+            at this page. Continued use after changes means acceptance.
+          </p>
+
+          <H>8. Contact</H>
+          <p>
+            Questions: {getSupportHandle()} on Telegram.
           </p>
         </div>
       </Container>
