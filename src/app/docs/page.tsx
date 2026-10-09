@@ -150,7 +150,7 @@ export default function DocsPage() {
   "address": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "energyQuantity": 65000,
   "durationHours": 1,
-  "priceSun": 1470000,
+  "priceSun": 1670000,
   "heldSun": 1470000,
   "createdAt": "2026-10-09T10:00:00Z",
   "idempotentReplay": false
@@ -177,7 +177,7 @@ export default function DocsPage() {
   "address": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "energyQuantity": 65000,
   "durationHours": 1,
-  "priceSun": 1470000,
+  "priceSun": 1670000,
   "createdAt": "2026-10-09T10:00:00Z",
   "executedAt": "2026-10-09T10:00:12Z",
   "failureCode": null,
@@ -195,10 +195,10 @@ export default function DocsPage() {
   -H "Authorization: Bearer tvb2b_YOUR_KEY"
 
 {
-  "availableSun": 98530000,
+  "availableSun": 98330000,
   "heldSun": 0,
-  "totalSun": 98530000,
-  "availableTrx": 98.53,
+  "totalSun": 98330000,
+  "availableTrx": 98.33,
   "heldTrx": 0,
   "totalTrx": 98.53
 }`}</Code>
@@ -215,8 +215,8 @@ export default function DocsPage() {
 {
   "currency": "trx",
   "packages": [
-    { "energyQuantity": 65000,  "durationHours": 1, "priceTrx": 1.47 },
-    { "energyQuantity": 135000, "durationHours": 1, "priceTrx": 2.73 },
+    { "energyQuantity": 65000,  "durationHours": 1, "priceTrx": 1.67 },
+    { "energyQuantity": 135000, "durationHours": 1, "priceTrx": 2.66 },
     { "energyQuantity": 270000, "durationHours": 1, "priceTrx": 5.16 }
   ]
 }`}</Code>
@@ -241,7 +241,7 @@ X-TronVolt-Signature: sha256=ab12…
   "address": "TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "energyAmount": 65000,
   "durationHours": 1,
-  "priceSun": 1470000,
+  "priceSun": 1670000,
   "occurredAt": "2026-10-09T10:00:12Z"
 }`}</Code>
           <p className="mt-4 text-sm text-muted">
