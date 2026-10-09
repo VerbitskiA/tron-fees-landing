@@ -84,7 +84,7 @@ export default function DocsPage() {
             </li>
             <li>
               Top up your deposit from the partner cabinet in the bot — from
-              50 TRX, credited automatically
+              10 TRX, credited automatically
             </li>
           </ol>
           <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -300,7 +300,7 @@ ok = hmac.compare_digest(expected, request.headers["X-TronVolt-Signature"])`}</C
           <h2 className="text-lg font-semibold">Ready to integrate?</h2>
           <p className="mt-2 text-sm text-muted">
             The whole onboarding takes minutes: apply in the bot, get the key,
-            top up 50 TRX — and your first order can go out today.
+            top up 10 TRX — and your first order can go out today.
           </p>
           <div className="mt-4">
             {botUrl ? (
