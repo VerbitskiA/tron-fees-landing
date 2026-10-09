@@ -205,17 +205,19 @@ export default function DocsPage() {
         </Endpoint>
 
         <Endpoint method="GET" path="/pricing" title="Pricing">
-          <p>Live prices for the standard packages: retail vs your discounted rate.</p>
+          <p>
+            Live prices for the standard packages. Your rate floats with the
+            energy market: provider cost plus a small fixed markup.
+          </p>
           <Code>{`curl ${BASE_URL}/pricing \\
   -H "Authorization: Bearer tvb2b_YOUR_KEY"
 
 {
-  "discountPercent": 10,
   "currency": "trx",
   "packages": [
-    { "energyQuantity": 65000,  "durationHours": 1, "retailTrx": 2.5, "partnerTrx": 2.25 },
-    { "energyQuantity": 135000, "durationHours": 1, "retailTrx": 4.5, "partnerTrx": 4.05 },
-    { "energyQuantity": 270000, "durationHours": 1, "retailTrx": 8.5, "partnerTrx": 7.65 }
+    { "energyQuantity": 65000,  "durationHours": 1, "priceTrx": 1.47 },
+    { "energyQuantity": 135000, "durationHours": 1, "priceTrx": 2.73 },
+    { "energyQuantity": 270000, "durationHours": 1, "priceTrx": 5.16 }
   ]
 }`}</Code>
         </Endpoint>
