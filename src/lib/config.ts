@@ -1,7 +1,15 @@
 export const MAX_SAVINGS_PERCENT = 70;
 
-/** Client pays ~30% of baseline TRX cost (~70% savings). */
-export const TRONVOLT_COST_RATE = 0.3;
+/**
+ * Retail package prices (TRX), mirroring bot pricing: CatFee cost + min margin
+ * (Pricing:MinMarginTrx), rounded up to a 0.5 TRX step. `coversBurnTrx` is the
+ * network burn cost the package's Energy covers. Update together with pricing.
+ */
+export const PRICE_PACKS = [
+  { energy: 65_000, coversBurnTrx: 13.5, priceTrx: 4.0 },
+  { energy: 135_000, coversBurnTrx: 27, priceTrx: 5.0 },
+  { energy: 270_000, coversBurnTrx: 54, priceTrx: 7.5 },
+] as const;
 
 export const logo = {
   /** Optional brand asset in public/. For favicon, prefer `src/app/icon.png`. */

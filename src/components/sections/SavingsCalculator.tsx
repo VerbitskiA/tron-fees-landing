@@ -79,7 +79,7 @@ export function SavingsCalculator() {
               <input
                 id="avg-fee"
                 type="range"
-                min={1}
+                min={10}
                 max={60}
                 step={0.1}
                 value={avgTrxFee}
@@ -91,16 +91,20 @@ export function SavingsCalculator() {
               />
               <input
                 type="number"
-                min={0.1}
+                min={10}
                 max={100}
                 step={0.1}
                 value={avgTrxFee}
                 onChange={(e) => {
                   onInputChange();
-                  setAvgTrxFee(Math.max(0.1, Number(e.target.value)));
+                  setAvgTrxFee(Math.max(10, Number(e.target.value)));
                 }}
                 className="mt-2 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm outline-none focus:border-primary"
               />
+              <p className="mt-1 text-xs text-muted">
+                Typical USDT TRC-20 transfer: ~13.5 TRX (recipient already has
+                USDT) or ~27 TRX (first transfer to a new address).
+              </p>
             </div>
           </div>
 
@@ -130,8 +134,8 @@ export function SavingsCalculator() {
         </div>
 
         <p className="mt-6 text-center text-xs text-muted">
-          Estimates based on typical delegation savings; actual pricing varies
-          by energy amount.
+          Estimates use current package pricing (65k / 135k / 270k Energy); the
+          bot shows the exact price before you pay.
         </p>
       </Card>
     </Section>
