@@ -25,7 +25,7 @@ const steps = [
     step: "Step 3",
     title: "Spend rewards on energy",
     description:
-      "Rewards apply as a discount of up to 80% on your own energy orders — no withdrawal hassle.",
+      "Rewards apply as a discount of up to 50% on your own energy orders — no withdrawal hassle.",
   },
 ];
 

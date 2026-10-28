@@ -68,7 +68,7 @@ export default function TermsPage() {
           <p>
             Users earn rewards on paid orders of users they invite (by default
             50% of the order margin). Rewards are service credits: they are
-            applied automatically as a discount (up to 80% of the order price)
+            applied automatically as a discount (up to 50% of the order price)
             on the inviter&apos;s own orders. Rewards have no cash value, cannot
             be withdrawn and do not accrue interest. We may change reward rates
             for future orders at any time; changes do not affect already accrued
