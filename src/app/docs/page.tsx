@@ -215,9 +215,9 @@ export default function DocsPage() {
 {
   "currency": "trx",
   "packages": [
-    { "energyQuantity": 65000,  "durationHours": 1, "priceTrx": 1.67 },
-    { "energyQuantity": 135000, "durationHours": 1, "priceTrx": 2.66 },
-    { "energyQuantity": 270000, "durationHours": 1, "priceTrx": 5.16 }
+    { "energyQuantity": 65000,  "durationHours": 1, "priceTrx": 2.17 },
+    { "energyQuantity": 135000, "durationHours": 1, "priceTrx": 3.43 },
+    { "energyQuantity": 270000, "durationHours": 1, "priceTrx": 5.86 }
   ]
 }`}</Code>
         </Endpoint>
