@@ -283,7 +283,7 @@ ok = hmac.compare_digest(expected, request.headers["X-TronVolt-Signature"])`}</C
                   ["401", "Missing, invalid or revoked API key."],
                   ["403", "Key is fine but the partner account is not active yet."],
                   ["404", "Unknown resource — or an order that belongs to another partner."],
-                  ["409", "Insufficient deposit: the response carries availableSun / requiredSun."],
+                  ["409", "Insufficient deposit (availableSun / requiredSun) — or idempotency conflict: this Idempotency-Key was already used for a different request (address / energy / duration must match)."],
                   ["429", "Rate limit exceeded — retry after the Retry-After header."],
                 ].map(([code, meaning]) => (
                   <tr key={code} className="border-b border-white/5">
